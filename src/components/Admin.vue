@@ -286,7 +286,7 @@
           </div>
         </div>
       </div>
-        <!-- END Dynamic Table Full -
+        <!-- END Dynamic Table Full -->
       <!-- END Page Content -->
     </main>
   <!-- END Main Container -->

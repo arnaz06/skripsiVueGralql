@@ -60,7 +60,7 @@
                 </div>
                 <div class="block-content block-content-full">
                   <div class="block block-transparent pull-r-l">
-                    <form class="form-horizontal" action="#" method="">
+                    <form class="form-horizontal" @submit.prevent="createMatriculant"  method="POST">
                       <!-- form A -->
                       <div class="block-header bg-gray-lighter">
                         <ul class="block-options">
@@ -81,30 +81,23 @@
                       </div>
                       <div class="block-content">
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="gelombang_pendaftaran">Gelombang Pendafaran</label>
+                          <label class="col-md-4 control-label" for="regisGroup">Gelombang Pendafaran</label>
                           <div class="col-md-8">
-                            <div name="" type="text" class="form-control-static" id="gelombang_pendaftaran">{some.value}</div>
+                            <input type="text" class="form-control-static"  v-model="regisGroupId">
                           </div>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                           <label class="col-md-4 control-label" for="jenis_pendaftaran">Jenis Pendafaran</label>
                           <div class="col-md-8">
-                            <select required name="" class="form-control" id="jenis_pendaftaran">
+                            <select required name="" v-model="type" class="form-control" id="jenis_pendaftaran">
                               <option value="">...</option>
                             </select>
                           </div>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                           <label class="col-md-4 control-label" for="nisn">NISN</label>
                           <div class="col-md-8">
-                            <input required name="" type="text" class="form-control" id="nisn" placeholder="masukkan NISN anda...">
-                            <div class="help-block text-right">
-                              tidak tahu
-                              <b>NISN</b> anda? cari
-                              <a href="#">
-                                <b>disini</b>
-                              </a>
-                            </div>
+                            <input required name="" type="text" v-model="nisn" class="form-control" id="nisn" placeholder="masukkan NISN anda...">
                           </div>
                         </div>
                       </div>
@@ -132,55 +125,59 @@
                         <div class="form-group">
                           <label class="col-md-4 control-label" for="nomor_induk_kependudukan">Nomor Induk Kependudukan</label>
                           <div class="col-md-8">
-                            <input required name="" type="text" class="form-control" id="nomor_induk_kependudukan" placeholder="masukkan NIK anda...">
+                            <input required name="nik" type="text" v-model="nik" class="form-control" id="nik" placeholder="masukkan NIK anda...">
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="col-md-4 control-label" for="nama_lengkap">Nama Lengkap</label>
                           <div class="col-md-8">
-                            <input required name="" type="text" class="form-control" id="nama_lengkap" placeholder="masukkan Nama Lengkap anda...">
+                            <input required name="fullName" type="text" v-model="fullName" class="form-control" id="fullName" placeholder="masukkan Nama Lengkap anda...">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="jenis_kelamin">Jenis Kelamin</label>
+                          <label class="col-md-4 control-label" for="gender">Jenis Kelamin</label>
                           <div class="col-md-8">
-                            <select required name="" class="form-control" id="jenis_kelamin">
-                              <option value="">...</option>
+                            <select required name="gender" v-model="gender" class="form-control" id="gender">
+                              <option value="MALE">LAKI-LAKI</option>
+                              <option value="FEMALE">PEREMPUAN</option>
                             </select>
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="col-md-4 control-label" for="golongan_darah">Golongan Darah</label>
                           <div class="col-md-8">
-                            <select required name="" class="form-control" id="golongan_darah">
-                              <option value="">...</option>
+                            <select required name="bloodType" v-model="bloodType" class="form-control" id="bloodType">
+                              <option value="A">A</option>
+                              <option value="B">B</option>
+                              <option value="AB">AB</option>
+                              <option value="O">O</option>
                             </select>
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="col-md-4 control-label" for="tempat_lahir">Tempat Lahir</label>
                           <div class="col-md-8">
-                            <input required name="" type="text" class="form-control" id="tempat_lahir" placeholder="dimana Tempat Lahir anda...">
+                            <input required name="birthPlace" type="text" v-model="birthPlace" class="form-control" id="birthPlace" placeholder="dimana Tempat Lahir anda...">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="tanggal_lahir">Tanggal Lahir</label>
+                          <label class="col-md-4 control-label" for="birth">Tanggal Lahir</label>
                           <div class="col-md-8">
-                            <input required name="" class="js-datepicker form-control" id="tanggal_lahir" data-date-format="mm/dd/yy" placeholder="mm/dd/yy" type="text">
+                            <input required name="birth" v-model="birth" class="js-datepicker form-control" id="birth" data-date-format="mm/dd/yy" placeholder="mm/dd/yy" type="text">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="agama">Agama</label>
+                          <label class="col-md-4 control-label" for="religion">Agama</label>
                           <div class="col-md-8">
-                            <select required name="" class="form-control" id="agama">
-                              <option value="">...</option>
+                            <select required name="religion"  v-model="religion" class="form-control" id="religion">
+                              <option value="ISLAM">ISLAM</option>
                             </select>
                           </div>
                         </div>
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="kewarganegaraan">Kewarganegaraan</label>
+                          <label class="col-md-4 control-label" for="citizenship">Kewarganegaraan</label>
                           <div class="col-md-8">
-                            <select required name="" class="js-select2 form-control" id="kewarganegaraan" style="width: 100%;" data-placeholder="pilih Kewarganegaraan anda..">
+                            <select required name="citizenship" v-model="citizenship" class="js-select2 form-control" id="citizenship" style="width: 100%;" data-placeholder="pilih Kewarganegaraan anda..">
                               <option></option>
                               <option value="1">Indonesia</option>
                             </select>
@@ -188,138 +185,62 @@
                         </div>
                         <hr>
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="nama_ayah_wali">Nama Ayah/Wali</label>
+                          <label class="col-md-4 control-label" for="fatherName">Nama Ayah/Wali</label>
                           <div class="col-md-8">
-                            <input required name="" type="text" class="form-control" id="nama_ayah_wali" placeholder="siapa nama Ayah/Wali anda...">
+                            <input required name="fatherName" v-model="fatherName" type="text" class="form-control" id="fatherName" placeholder="siapa nama Ayah/Wali anda...">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="tanggal_lahir_wali">Tanggal Lahir Ayah/Wali</label>
+                          <label class="col-md-4 control-label" for="fatherBirth">Tanggal Lahir Ayah/Wali</label>
                           <div class="col-md-8">
-                            <input required name="" class="js-datepicker form-control" id="tanggal_lahir_wali" data-date-format="mm/dd/yy" placeholder="mm/dd/yy"
+                            <input required name="fatherBirth" v-model="fatherBirth" class="js-datepicker form-control" id="fatherBirth" data-date-format="mm/dd/yy" placeholder="mm/dd/yy"
                               type="text">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="nama_ibu">Nama Ibu</label>
+                          <label class="col-md-4 control-label" for="motherName">Nama Ibu</label>
                           <div class="col-md-8">
-                            <input required name="" type="text" class="form-control" id="nama_ibu" placeholder="siapa nama Ibu anda...">
+                            <input required name="motherName" v-model="motherName" type="text" class="form-control" id="motherName" placeholder="siapa nama Ibu anda...">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="tanggal_lahir_ibu">Tanggal Lahir Ibu</label>
+                          <label class="col-md-4 control-label" for="motherBirth">Tanggal Lahir Ibu</label>
                           <div class="col-md-8">
-                            <input required name="" class="js-datepicker form-control" id="tanggal_lahir_ibu" data-date-format="mm/dd/yy" placeholder="mm/dd/yy"
+                            <input required name="motherBirth" v-model="motherBirth" class="js-datepicker form-control" id="motherBirth" data-date-format="mm/dd/yy" placeholder="mm/dd/yy"
                               type="text">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="pekerjaan_wali">Pekerjaan Orang Tua/Wali</label>
+                          <label class="col-md-4 control-label" for="parentsJob">Pekerjaan Orang Tua/Wali</label>
                           <div class="col-md-8">
-                            <select required name="" class="js-select2 form-control" id="pekerjaan_wali" style="width: 100%;" data-placeholder="Pekerjaan Ortu/Wali..">
-                              <option></option>
-                              <option value="1">Programmer</option>
-                            </select>
+                            <input required name="parentsJob" v-model="parentsJob" class="js-datepicker form-control" id="parentsJob" 
+                              type="text">
                           </div>
                         </div>
                         <hr>
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="propinsi_asal">Propinsi Asal</label>
+                          <label class="col-md-4 control-label" for="originId">ID Propinsi Asal</label>
                           <div class="col-md-8">
-                            <select required name="" class="js-select2 form-control" id="propinsi_asal" style="width: 100%;" data-placeholder="asal Propinsi anda..">
-                              <option></option>
-                              <option value="1">Prop. A</option>
-                            </select>
+                            <input required name="originId" v-model="originId" class="js-datepicker form-control" id="originId"
+                              type="text">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="kota_kab_asal">Kota/Kabupaten Asal</label>
+                          <label class="col-md-4 control-label" for="address">Alamat Asal</label>
                           <div class="col-md-8">
-                            <select required name="" class="js-select2 form-control" id="kota_kab_asal" style="width: 100%;" data-placeholder="asal Kota/Kabupaten anda..">
-                              <option></option>
-                              <option value="1">Kota. A</option>
-                            </select>
+                            <input required name="address" v-model="address" type="text" class="form-control" id="address" placeholder="asal Desa/Kelurahan anda...">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="kecamatan_asal">Kecamatan Asal</label>
+                          <label class="col-md-4 control-label" for="phone">Telepon</label>
                           <div class="col-md-8">
-                            <select required name="" class="js-select2 form-control" id="kecamatan_asal" style="width: 100%;" data-placeholder="asal Kecamatan anda..">
-                              <option></option>
-                              <option value="1">Kec. A</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-md-4 control-label" for="desa_kelurahan">Desa/Kelurahan</label>
-                          <div class="col-md-8">
-                            <input required name="" type="text" class="form-control" id="desa_kelurahan" placeholder="asal Desa/Kelurahan anda...">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-md-4 control-label" for="dusun">Dusun Asal</label>
-                          <div class="col-md-8">
-                            <input required name="" type="text" class="form-control" id="dusun" placeholder="asal Dusun anda...">
-                            <div class="help-block text-right">
-                              jika alamat didahului dengan nama dusun, isian ini bisa diganti dengan tanda
-                              <b>(-)</b>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-md-4 control-label" for="Alamat">Alamat Asal</label>
-                          <div class="col-md-8">
-                            <textarea name="" class="js-maxlength form-control" id="alamat" rows="3" maxlength="100" placeholder="tuliskan Alamat Lengkap anda"
-                              data-always-show="true"></textarea>
-                            <div class="help-block text-right">
-                              Alamat ditulis maksimal sampai nomor rumah. Jika tidak ada nama jalan, tuliskan nama kampung/dusunnya.
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-md-4 control-label" for="rt_rw">RT/RW</label>
-                          <div class="col-md-8">
-                            <div class="col-md-5" style="margin-left: 0;padding-left: 0">
-                              <input required name="" type="text" class="form-control" id="rt_rw" placeholder="RT...">
-                            </div>
-                            <div class="col-md-2">
-                              <div class="form-control" style="border: none;">/</div>
-                            </div>
-                            <div class="col-md-5 text-right" style="margin-right: 0;padding-right: 0">
-                              <input required name="" type="text" class="form-control" id="rt_rw" placeholder="RW...">
-                            </div>
-                            <div class="help-block text-right">Tuliskan 3 digit angka arab, bukan angka romawi.
-                              <br> Contoh : 002, 012 </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-md-4 control-label" for="kode_pos">Kode Pos</label>
-                          <div class="col-md-8">
-                            <input required name="" type="text" class="form-control" id="kode_pos" placeholder="masukkan Kode pos anda...">
-                            <div class="help-block text-right">
-                              Tidak tahu kodepos Anda? Cari
-                              <a href="#">
-                                <b>di sini</b>
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-md-4 control-label" for="telepon">Telepon</label>
-                          <div class="col-md-8">
-                            <input required name="" type="text" class="form-control" id="telepon" placeholder="masukkan nomor Telepon anda...">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-md-4 control-label" for="handphone">Handphone</label>
-                          <div class="col-md-8">
-                            <input required name="" type="text" class="form-control" id="handphone" placeholder="masukkan nomor Handphone anda...">
+                            <input required name="phone" v-model="phone" type="text" class="form-control" id="phone" placeholder="masukkan nomor Telepon anda...">
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="col-md-4 control-label" for="email">Email</label>
                           <div class="col-md-8">
-                            <input required name="" type="email" class="form-control" id="email" placeholder="masukkan Email anda...">
+                            <input required name="email" v-model="email" type="email" class="form-control" id="email" placeholder="masukkan Email anda...">
                           </div>
                         </div>
                       </div>
@@ -345,46 +266,16 @@
                       </div>
                       <div class="block-content">
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="propinsi_pendidikan">Propinsi</label>
+                          <label class="col-md-4 control-label" for="lastEducationId"> ID Pendidikan Terakhir</label>
                           <div class="col-md-8">
-                            <select required name="" class="js-select2 form-control" id="propinsi_pendidikan" style="width: 100%;" data-placeholder="asal Propinsi Pendidikan anda..">
-                              <option></option>
-                              <option value="1">Prop. A</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-md-4 control-label" for="kota_kab_pendidikan">Kota/Kabupaten</label>
-                          <div class="col-md-8">
-                            <select required name="" class="js-select2 form-control" id="kota_kab_pendidikan" style="width: 100%;" data-placeholder="asal Kota/Kabupaten Pendidikan anda..">
-                              <option></option>
-                              <option value="1">Kota. A</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-md-4 control-label" for="sekolah">Sekolah</label>
-                          <div class="col-md-8">
-                            <select required name="" class="js-select2 form-control" id="sekolah" style="width: 100%;" data-placeholder="asal Sekolah anda..">
-                              <option></option>
-                              <option value="1">SMA/K. A</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-md-4 control-label" for="jurusan">Jurusan</label>
-                          <div class="col-md-8">
-                            <select required name="" class="js-select2 form-control" id="jurusan" style="width: 100%;" data-placeholder="Jurusan yg anda ampu..">
-                              <option></option>
-                              <option value="1">SMA/K. A</option>
-                            </select>
+                            <input required name="lastEducationId" v-model="lastEducationId" type="text" class="form-control" id="lastEducationId" >
                           </div>
                         </div>
                       </div>
                       <!-- end form C -->
 
                       <!-- form D -->
-                      <div class="block-header bg-gray-lighter">
+                      <!-- <div class="block-header bg-gray-lighter">
                         <ul class="block-options">
                           <li>
                             <span>
@@ -420,7 +311,7 @@
                             </select>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                       <!-- end form D -->
 
                       <!-- form E -->
@@ -445,13 +336,7 @@
                         <div class="form-group">
                           <label class="col-md-4 control-label" for="password">Password</label>
                           <div class="col-md-8">
-                            <input required name="" type="password" class="form-control" id="password" placeholder="masukkan password anda...">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-md-4 control-label" for="ulangi_password">Ulangi Password</label>
-                          <div class="col-md-8">
-                            <input required name="" type="password" class="form-control" id="ulangi_password" placeholder="...dan ulangi password anda.">
+                            <input required name="password" v-model="password" type="password" class="form-control" id="password" placeholder="masukkan password anda...">
                           </div>
                         </div>
                       </div>
@@ -530,7 +415,7 @@
                       <!-- simpan -->
                       <div class="form-group text-center">
                         <div class="col-md-12">
-                          <button class="btn btn-lg btn-success" type="submit">Simpan Formulir</button>
+                          <button class="btn btn-lg btn-success"  type="submit">Simpan Formulir</button>
                         </div>
                       </div>
                     </form>
@@ -547,6 +432,76 @@
     </div>
 </template>
 <script>
+import {CREATE_MATRICULANT} from '../graphql'
+
+
+export default{
+  name: 'CreateMatriculant',
+  data(){
+    return{
+      nik:'',
+      nisn:'',
+      fullName:'',
+      gender:'',
+      bloodType:'',
+      birthPlace:'',
+      birth:'',
+      religion:'',
+      citizenship:'',
+      fatherName:'',
+      fatherBirth:'',
+      motherName:'',
+      motherBirth:'',
+      parentsJob:'',
+      email:'',
+      phone:'',
+      password:'',
+      sourceInformation:'',
+      regisGroupId:'',
+      address:'',
+      status:'',
+      originId:'',
+      lastEducationId:''
+    }
+  },
+  methods:{
+    createMatriculant(){
+      this.$apollo.mutate({
+        mutation: CREATE_MATRICULANT,
+        variables:{
+          NIK: this.nik,
+          NISN: this.nisn,
+          fullName: this.fullName,
+          gender: this.gender,
+          bloodType: this.bloodType,
+          birthPlace: this.birthPlace,
+          birth: this.birth,
+          religion: this.religion,
+          citizenship: this.citizenship,
+          fatherName: this.fatherName,
+          fatherBirth: this.fatherBirth,
+          motherName: this.motherName,
+          motherBirth: this.motherBirth,
+          parentsJob: this.parentsJob,
+          email: this.email,
+          phone: this.phone,
+          password: this.password,
+          sourceInformation: "TEMAN",
+          RegistrationGroup: parseInt(this.regisGroupId),
+          address: this.address,
+          status: "Mundur",
+          Origin: parseInt(this.originId),
+          LastEducation: parseInt(this.lastEducationId)
+        }
+      }).then(response=>{
+        alert('berhasil hore')
+      }).catch(err=>{
+        console.log(err)
+        alert(err.networkError)
+      })
+    }
+  }
+}
 </script>
 <style>
 </style>

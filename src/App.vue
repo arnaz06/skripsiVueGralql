@@ -1,15 +1,12 @@
 <template>
-    <div class="container">
-      <app-form></app-form>
+    <div id="app">
+      <router-view/>
     </div>
 </template>
 
 <script>
-    import Form from './components/Form.vue'
     export default {
-        components: {
-            'app-form': Form
-        }
+      name: 'app'
     }
 </script>
 
