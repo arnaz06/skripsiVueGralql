@@ -1,8 +1,31 @@
 import gql from 'graphql-tag'
 
+export const MATRICULANT_ALL = gql `
+query matriculantAll{
+  matriculantAll{
+    id
+    fullName
+    NISN
+
+  }
+}
+`
+export const STATMATRICULANT = gql`
+query statMatriculant($date:String,$status:Status,$schoolName:String,$regisGroup:String){
+  matriculantStatistic(
+    date: $date,
+    status: $status,
+    schoolName: $schoolName,
+    regisGroup: $regisGroup
+    ){
+     id
+     fullName
+     NISN
+  }
+}
+`
 
 export const CREATE_MATRICULANT = gql`
-
 mutation CreateMatriculant($NIK: String!,$NISN: String!,
                           $fullName: String!,$gender: Gender!,
                           $bloodType: BloodType!,$birthPlace: String!,
@@ -12,7 +35,7 @@ mutation CreateMatriculant($NIK: String!,$NISN: String!,
                           $parentsJob: String!, $email: String!,$phone: String!,
                           $password: String!,$sourceInformation: SourceInformation!,
                           $RegistrationGroup: Int!,$address: String!,
-                          $status: Status!,$Origin: Int!,$LastEducation: Int!){
+                          $status: Status!,$Origin: Int!,$LastEducation: Int!,$majorOne: Int!,$majorTwo: Int!){
       createMatriculant(input:{
         NIK: $NIK,
         NISN: $NISN,
@@ -36,7 +59,9 @@ mutation CreateMatriculant($NIK: String!,$NISN: String!,
         address: $address,
         status: $status,
         Origin: $Origin,
-        LastEducation: $LastEducation
+        LastEducation: $LastEducation,
+        majorOne: $majorOne,
+        majorTwo: $majorTwo
       }){
         NIK
         NISN

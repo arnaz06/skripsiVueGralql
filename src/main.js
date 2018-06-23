@@ -5,7 +5,10 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import VueApollo from 'vue-apollo'
 import App from './App.vue'
 import router from './router'
+import VueGoodTable from 'vue-good-table';
 
+
+Vue.use(VueGoodTable);
 Vue.config.productionTip= false
 
 const httpLink = new HttpLink({

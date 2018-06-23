@@ -68,18 +68,9 @@
           <div class="side-content">
             <ul class="nav-main">
               <li>
-                <a href="#">
+                <a href="http://localhost:8080/">
                   <i class="si si-speedometer"></i>
-                  <span class="sidebar-mini-hide">{content.menu}</span>
-                </a>
-              </li>
-              <li class="nav-main-heading">
-                <span class="sidebar-mini-hide">{header.nav}</span>
-              </li>
-              <li>
-                <a class="nav-submenu" href="#">
-                  <i class="si si-badge"></i>
-                  <span class="sidebar-mini-hide">{content.menu}</span>
+                  <span class="sidebar-mini-hide">Form Pendaftaran</span>
                 </a>
               </li>
             </ul>
@@ -215,76 +206,8 @@
           </div>
         </div>
         <!-- Dynamic Table Full -->
-        <div class="block">
-          <div class="block-header">
-            <h3 class="block-title">{table.name}
-              <small>{table.full.function}</small>
-            </h3>
-          </div>
-          <div class="block-content">
-            <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js -->
-            <table class="table table-bordered table-striped js-dataTable-full">
-              <thead>
-                <tr>
-                  <th class="text-center" style="width: 3%">{col.1}</th>
-                  <th>{col.2}</th>
-                  <!-- hidden : ndee hidden pas posisi -scale -->
-                  <th class="hidden-xs">{col.3}</th>
-                  <th class="hidden-xs" style="width: 15%;">{col.4}</th>
-                  <th class="text-center" style="width: 10%;">{col.5}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="text-center">1</td>
-                  <td class="font-w600">A</td>
-                  <td class="hidden-xs">A.</td>
-                  <td class="hidden-xs">
-                    <span class="label label-info">A.info</span>
-                    <span class="label label-danger">A.danger</span>
-                    <span class="label label-warning">A.warning</span>
-                    <span class="label label-success">A.success</span>
-                  </td>
-                  <td class="text-center">
-                    <!-- ngmong wae nk butuh di tambahi opo -->
-                    <div class="btn-group">
-                      <button class="btn btn-xs btn-info" type="button" data-toggle="tooltip" title="View">
-                        <i class="fa fa-eye"></i>
-                      </button>
-                      <button class="btn btn-xs btn-warning" type="button" data-toggle="tooltip" title="Edit">
-                        <i class="fa fa-pencil"></i>
-                      </button>
-                      <button class="btn btn-xs btn-danger" type="button" data-toggle="tooltip" title="Remove">
-                        <i class="fa fa-times"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-center">2</td>
-                  <td class="font-w600">B</td>
-                  <td class="hidden-xs">B</td>
-                  <td class="hidden-xs">
-                    <span class="label label-info">B.info</span>
-                  </td>
-                  <td class="text-center">
-                    <div class="btn-group">
-                      <button class="btn btn-xs btn-info" type="button" data-toggle="tooltip" title="View">
-                        <i class="fa fa-eye"></i>
-                      </button>
-                      <button class="btn btn-xs btn-warning" type="button" data-toggle="tooltip" title="Edit">
-                        <i class="fa fa-pencil"></i>
-                      </button>
-                      <button class="btn btn-xs btn-danger" type="button" data-toggle="tooltip" title="Remove">
-                        <i class="fa fa-times"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+       <app-table></app-table>
+          
       </div>
         <!-- END Dynamic Table Full -->
       <!-- END Page Content -->
@@ -308,9 +231,12 @@
   <!-- END Page Container -->
 </div>
 </template>
-
 <script>
+import Table from './Table.vue'
 export default {
+  components:{
+    'app-table': Table
+  },
   mounted () {
     this.$nextTick(() => {
                 var ctx = document.getElementById("myChart").getContext('2d');

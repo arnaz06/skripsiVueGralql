@@ -67,7 +67,7 @@
                           <li>
                             <span>
                               <em class="text-muted">tidak boleh kosong</em>
-                            </span>
+                            </span>form
                           </li>
                           <li>
                             <span>
@@ -275,7 +275,7 @@
                       <!-- end form C -->
 
                       <!-- form D -->
-                      <!-- <div class="block-header bg-gray-lighter">
+                      <div class="block-header bg-gray-lighter">
                         <ul class="block-options">
                           <li>
                             <span>
@@ -296,22 +296,16 @@
                         <div class="form-group">
                           <label class="col-md-4 control-label" for="pilihan_pertama">Pilihan I</label>
                           <div class="col-md-8">
-                            <select required name="" class="js-select2 form-control" id="pilihan_pertama" style="width: 100%;" data-placeholder="::PILIHAN::">
-                              <option></option>
-                              <option value="1">JURUSAN</option>
-                            </select>
+                            <input required name="majorOne" v-model="majorOne" type="text" class="form-control" id="majorOne" >
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="col-md-4 control-label" for="pilihan_kedua">Pilihan II</label>
-                          <div class="col-md-8">
-                            <select required name="" class="js-select2 form-control" id="pilihan_kedua" style="width: 100%;" data-placeholder="::PILIHAN::">
-                              <option></option>
-                              <option value="1">JURUSAN</option>
-                            </select>
+                           <div class="col-md-8">
+                            <input required name="majorTwo" v-model="majorTwo" type="text" class="form-control" id="majorTwo" >
                           </div>
                         </div>
-                      </div> -->
+                      </div>
                       <!-- end form D -->
 
                       <!-- form E -->
@@ -461,11 +455,14 @@ export default{
       address:'',
       status:'',
       originId:'',
-      lastEducationId:''
+      lastEducationId:'',
+      majorOne:'',
+      majorTwo:''
     }
   },
   methods:{
     createMatriculant(){
+      console.log(this.majorOne)
       this.$apollo.mutate({
         mutation: CREATE_MATRICULANT,
         variables:{
@@ -491,9 +488,12 @@ export default{
           address: this.address,
           status: "Mundur",
           Origin: parseInt(this.originId),
-          LastEducation: parseInt(this.lastEducationId)
+          LastEducation: parseInt(this.lastEducationId),
+          majorOne: parseInt(this.majorOne),
+          majorTwo: parseInt(this.majorTwo)
         }
       }).then(response=>{
+        console.log(response)
         alert('berhasil hore')
       }).catch(err=>{
         console.log(err)

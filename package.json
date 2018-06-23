@@ -19,6 +19,8 @@
     "graphql-tag": "^2.9.2",
     "vue": "^2.5.11",
     "vue-apollo": "^3.0.0-beta.16",
+    "vue-datatable": "^1.0.4",
+    "vue-good-table": "^2.7.1",
     "vue-router": "^3.0.1"
   },
   "browserslist": [
