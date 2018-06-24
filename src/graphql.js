@@ -1,12 +1,24 @@
 import gql from 'graphql-tag'
 
+export const SORTMATRICULANT = gql`
+query sortMatriculant($type:String!){
+  sortMatriculant(type:$type){
+    ia
+    iia
+    iiia
+    iva
+  }
+}
+`
+
 export const MATRICULANT_ALL = gql `
 query matriculantAll{
   matriculantAll{
     id
     fullName
     NISN
-
+    status
+    createdAt
   }
 }
 `
@@ -21,6 +33,8 @@ query statMatriculant($date:String,$status:Status,$schoolName:String,$regisGroup
      id
      fullName
      NISN
+     status
+     createdAt
   }
 }
 `

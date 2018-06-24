@@ -94,7 +94,7 @@
         </button>
       </li>
       <li>
-        <h2>{dashboard.title}</h2>
+        <h2>Dashboard</h2>
       </li>
     </ul>
     <ul class="nav-header pull-right">
@@ -148,63 +148,9 @@
       <!-- Page Content -->
       <div class="content content-boxed">
         <!-- Header Tiles -->
-        <div class="row">
-          <div class="col-sm-6 col-md-3 col-xs-6">
-            <a class="block block-link-hover3 text-center" href="javascript:void(0)">
-              <div class="block-content block-content-full">
-                <div class="h1 font-w700 text-success" data-toggle="countTo" data-to="10"></div>
-              </div>
-              <div class="block-content block-content-full block-content-mini bg-gray-lighter text-success font-w600">{Green}</div>
-            </a>
-          </div>
-          <div class="col-sm-6 col-md-3 col-xs-6">
-            <a class="block block-link-hover3 text-center" href="javascript:void(0)">
-              <div class="block-content block-content-full">
-                <div class="h1 font-w700 text-danger" data-toggle="countTo" data-to="20"></div>
-              </div>
-              <div class="block-content block-content-full block-content-mini bg-gray-lighter text-danger font-w600">{Red}</div>
-            </a>
-          </div>
-          <div class="col-sm-6 col-md-3 col-xs-6">
-            <a class="block block-link-hover3 text-center" href="javascript:void(0)">
-              <div class="block-content block-content-full">
-                <div class="h1 font-w700 text-info" data-toggle="countTo" data-to="30"></div>
-              </div>
-              <div class="block-content block-content-full block-content-mini bg-gray-lighter  text-info font-w600">{Blue}</div>
-            </a>
-          </div>
-          <div class="col-sm-6 col-md-3 col-xs-6">
-            <a class="block block-link-hover3 text-center" href="javascript:void(0)">
-              <div class="block-content block-content-full">
-                <div class="h1 font-w700  text-warning" data-toggle="countTo" data-to="40"></div>
-              </div>
-              <div class="block-content block-content-full block-content-mini bg-gray-lighter text-warning font-w600">{Yellow}</div>
-            </a>
-          </div>
-        </div>
+        <app-chart></app-chart>
         <!-- END Header Tiles -->
-        <div class="row">
-          <div class="col-sm-12">
-            <!-- Stacked Chart -->
-            <div class="block">
-              <div class="block-header">
-                <ul class="block-options">
-                  <li>
-                    <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo">
-                      <i class="si si-refresh"></i>
-                    </button>
-                  </li>
-                </ul>
-                <h3 class="block-title">{graph}</h3>
-              </div>
-              <div class="block-content block-content-full">
-                <!-- Stacked Chart Container -->
-                <canvas id="myChart" width="400"></canvas>
-              </div>
-            </div>
-            <!-- END Stacked Chart -->
-          </div>
-        </div>
+        
         <!-- Dynamic Table Full -->
        <app-table></app-table>
           
@@ -233,53 +179,11 @@
 </template>
 <script>
 import Table from './Table.vue'
+import Chart from './Chart.vue'
 export default {
   components:{
-    'app-table': Table
-  },
-  mounted () {
-    this.$nextTick(() => {
-                var ctx = document.getElementById("myChart").getContext('2d');
-                var myChart = new Chart(ctx, {
-                  // ngubah tipe chart e ning kene
-                  // bar, line radar doughnut
-                  type: 'bar',
-                  data: {
-                    // nambah data ning kene
-                    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                    datasets: [{
-                      label: '{title}',
-                      data: [12, 19, 3, 5, 2, 3],
-                      backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                      ],
-                      borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                      ],
-                      borderWidth: 0
-                    }]
-                  },
-                  options: {
-                    scales: {
-                      yAxes: [{
-                        ticks: {
-                          beginAtZero: true
-                        }
-                      }]
-                    }
-                  }
-                });
-    })
+    'app-table': Table,
+    'app-chart': Chart
   }
 }
 </script>

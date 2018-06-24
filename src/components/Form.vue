@@ -171,6 +171,10 @@
                           <div class="col-md-8">
                             <select required name="religion"  v-model="religion" class="form-control" id="religion">
                               <option value="ISLAM">ISLAM</option>
+                              <option value="KRISTEN">KRISTEN</option>
+                              <option value="KATOLIK">KATOLIK</option>
+                              <option value="HINDU">HINDU</option>
+                              <option value="BUDHA">BUDHA</option>
                             </select>
                           </div>
                         </div>
@@ -179,7 +183,7 @@
                           <div class="col-md-8">
                             <select required name="citizenship" v-model="citizenship" class="js-select2 form-control" id="citizenship" style="width: 100%;" data-placeholder="pilih Kewarganegaraan anda..">
                               <option></option>
-                              <option value="1">Indonesia</option>
+                              <option value="Indonesia">Indonesia</option>
                             </select>
                           </div>
                         </div>
@@ -362,43 +366,37 @@
                           </label>
                           <div class="col-md-12">
                             <label class="css-input css-radio css-radio-sm css-radio-info">
-                              <input type="radio" name="radio-group1" checked>
+                              <input type="radio" value="Teman" v-model="sourceInformation" name="radio-group1" checked>
                               <span></span> Teman
                             </label>
                             <label class="css-input css-radio css-radio-sm css-radio-info">
-                              <input type="radio" name="radio-group1">
+                              <input type="radio" value="Keluarga" v-model="sourceInformation" name="radio-group1">
                               <span></span> Keluarga
                             </label>
                             <label class="css-input css-radio css-radio-sm css-radio-info">
-                              <input type="radio" name="radio-group1">
+                              <input type="radio" value="Forum" v-model="sourceInformation" name="radio-group1">
                               <span></span> Forum
                             </label>
                             <label class="css-input css-radio css-radio-sm css-radio-info">
-                              <input type="radio" name="radio-group1">
+                              <input type="radio" value="Google" v-model="sourceInformation" name="radio-group1">
                               <span></span> Google
                             </label>
                             <label class="css-input css-radio css-radio-sm css-radio-info">
-                              <input type="radio" name="radio-group1">
+                              <input type="radio" value="Media Cetak" v-model="sourceInformation" name="radio-group1">
                               <span></span> Media Cetak
                             </label>
                             <label class="css-input css-radio css-radio-sm css-radio-info">
-                              <input type="radio" name="radio-group1">
+                              <input type="radio" value="Baliho" v-model="sourceInformation" name="radio-group1">
                               <span></span> Baliho
                             </label>
                             <label class="css-input css-radio css-radio-sm css-radio-info">
-                              <input type="radio" name="radio-group1">
+                              <input type="radio" value="Youtube" v-model="sourceInformation" name="radio-group1">
                               <span></span> Youtube
                             </label>
                             <label class="css-input css-radio css-radio-sm css-radio-info">
-                              <input required type="radio" name="radio-group1">
+                              <input type="radio" value="Facebook" v-model="sourceInformation" name="radio-group1">
                               <span></span> Facebook
                             </label>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-md-4 control-label" for="tanggal_daftar">Tanggal Daftar</label>
-                          <div class="col-md-8">
-                            <div name="" id="tanggal_daftar" class="form-control-static">{some.value}</div>
                           </div>
                         </div>
                       </div>
@@ -483,7 +481,7 @@ export default{
           email: this.email,
           phone: this.phone,
           password: this.password,
-          sourceInformation: "TEMAN",
+          sourceInformation: $this.sourceInformation,
           RegistrationGroup: parseInt(this.regisGroupId),
           address: this.address,
           status: "Mundur",
