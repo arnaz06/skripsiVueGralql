@@ -1,12 +1,92 @@
 import gql from 'graphql-tag'
 
+
+
+export const MATRICULANT_PER_MONTH= gql`
+  query matriculantPerMonth($year: Int!){
+    matriculantPerMonth(year:$year){
+      jan
+      feb
+      mar
+      apr
+      may
+      jun
+      jul
+      ags
+      sep
+      oct
+      nov
+      dec
+    }
+  }
+`
+export const CHANGE_STATUS=gql`
+  mutation changeStatus($id:Int!,$status:Status!){
+    changeStatusMatriculant(input: {
+      id:$id,
+      status:$status
+    }){
+      id
+      status
+    }
+  }
+`
+
+export const MATRICULANT= gql`
+  query matriculant($id: Int!,$name: String){
+     matriculant(id: $id, name: $name) {
+       NIK
+       NISN
+       fullName
+       gender
+       bloodType
+       birthPlace
+       birth
+       religion
+       citizenship
+       fatherName
+       fatherBirth
+       motherName
+       motherBirth
+       parentsJob
+       email
+       phone
+       password
+       sourceInformation
+       RegistrationGroup {
+         type
+         group
+       }
+       address
+       status
+       Origin {
+         name
+         district
+         subDistrict
+         zipcode
+       }
+       LastEducation {
+         schoolName
+         major
+       }
+       MatriculantMajors {
+         Major {
+           name
+         }
+       }
+       createdAt
+     }
+  }
+`
+
 export const SORTMATRICULANT = gql`
 query sortMatriculant($type:String!){
   sortMatriculant(type:$type){
     ia
+    ib
+    ic
     iia
-    iiia
-    iva
+    iib
   }
 }
 `

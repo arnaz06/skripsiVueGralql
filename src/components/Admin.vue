@@ -150,7 +150,7 @@
         <!-- Header Tiles -->
         <app-chart></app-chart>
         <!-- END Header Tiles -->
-        
+       
         <!-- Dynamic Table Full -->
        <app-table></app-table>
           

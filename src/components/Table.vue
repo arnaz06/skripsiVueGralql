@@ -48,7 +48,7 @@
                   <td class="font-w600">{{matriculant.status}}</td>
                   <td class="font-w600">{{matriculant.createdAt}}</td>
                   <td class="text-center">
-                    <router-link :to="`/dashoard/matriculant/`+matriculant.id">View</router-link>
+                    <router-link :to="`/dashboard/matriculant/`+matriculant.id">View</router-link>
                   </td>
                 </tr>
               </tbody>

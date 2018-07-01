@@ -15,10 +15,12 @@
     "apollo-link": "^1.2.2",
     "apollo-link-context": "^1.0.8",
     "apollo-link-http": "^1.5.4",
+    "chart.js": "^2.7.2",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "vue": "^2.5.11",
     "vue-apollo": "^3.0.0-beta.16",
+    "vue-chartjs": "^3.3.2",
     "vue-datatable": "^1.0.4",
     "vue-good-table": "^2.7.1",
     "vue-router": "^3.0.1"
