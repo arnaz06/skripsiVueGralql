@@ -366,35 +366,35 @@
                           </label>
                           <div class="col-md-12">
                             <label class="css-input css-radio css-radio-sm css-radio-info">
-                              <input type="radio" value="Teman" v-model="sourceInformation" name="radio-group1" checked>
+                              <input type="radio" value="TEMAN" v-model="sourceInformation" name="radio-group1" checked>
                               <span></span> Teman
                             </label>
                             <label class="css-input css-radio css-radio-sm css-radio-info">
-                              <input type="radio" value="Keluarga" v-model="sourceInformation" name="radio-group1">
+                              <input type="radio" value="KELUARGA" v-model="sourceInformation" name="radio-group1">
                               <span></span> Keluarga
                             </label>
                             <label class="css-input css-radio css-radio-sm css-radio-info">
-                              <input type="radio" value="Forum" v-model="sourceInformation" name="radio-group1">
+                              <input type="radio" value="FORUM" v-model="sourceInformation" name="radio-group1">
                               <span></span> Forum
                             </label>
                             <label class="css-input css-radio css-radio-sm css-radio-info">
-                              <input type="radio" value="Google" v-model="sourceInformation" name="radio-group1">
+                              <input type="radio" value="GOOGLE" v-model="sourceInformation" name="radio-group1">
                               <span></span> Google
                             </label>
                             <label class="css-input css-radio css-radio-sm css-radio-info">
-                              <input type="radio" value="Media Cetak" v-model="sourceInformation" name="radio-group1">
+                              <input type="radio" value="MEDIA CETAK" v-model="sourceInformation" name="radio-group1">
                               <span></span> Media Cetak
                             </label>
                             <label class="css-input css-radio css-radio-sm css-radio-info">
-                              <input type="radio" value="Baliho" v-model="sourceInformation" name="radio-group1">
+                              <input type="radio" value="BALIHO" v-model="sourceInformation" name="radio-group1">
                               <span></span> Baliho
                             </label>
                             <label class="css-input css-radio css-radio-sm css-radio-info">
-                              <input type="radio" value="Youtube" v-model="sourceInformation" name="radio-group1">
+                              <input type="radio" value="YOUTUBE" v-model="sourceInformation" name="radio-group1">
                               <span></span> Youtube
                             </label>
                             <label class="css-input css-radio css-radio-sm css-radio-info">
-                              <input type="radio" value="Facebook" v-model="sourceInformation" name="radio-group1">
+                              <input type="radio" value="FACEBOOK" v-model="sourceInformation" name="radio-group1">
                               <span></span> Facebook
                             </label>
                           </div>
@@ -455,7 +455,8 @@ export default{
       originId:'',
       lastEducationId:'',
       majorOne:'',
-      majorTwo:''
+      majorTwo:'',
+      userId:null
     }
   },
   methods:{
@@ -481,14 +482,15 @@ export default{
           email: this.email,
           phone: this.phone,
           password: this.password,
-          sourceInformation: $this.sourceInformation,
+          sourceInformation: this.sourceInformation,
           RegistrationGroup: parseInt(this.regisGroupId),
           address: this.address,
           status: "Mundur",
           Origin: parseInt(this.originId),
           LastEducation: parseInt(this.lastEducationId),
           majorOne: parseInt(this.majorOne),
-          majorTwo: parseInt(this.majorTwo)
+          majorTwo: parseInt(this.majorTwo),
+          userId: 2
         }
       }).then(response=>{
         console.log(response)

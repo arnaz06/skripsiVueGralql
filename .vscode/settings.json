@@ -1,0 +1,14 @@
+{
+  "files.exclude": {
+    ".DS_Store": "explorerExcludedFiles",
+    "node_modules/": "explorerExcludedFiles",
+    "dist/": "explorerExcludedFiles",
+    "npm-debug.log": "explorerExcludedFiles",
+    "yarn-error.log": "explorerExcludedFiles",
+    ".idea": "explorerExcludedFiles",
+    "*.suo": "explorerExcludedFiles",
+    "*.ntvs*": "explorerExcludedFiles",
+    "*.njsproj": "explorerExcludedFiles",
+    "*.sln": "explorerExcludedFiles"
+  }
+}

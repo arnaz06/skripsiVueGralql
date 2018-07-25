@@ -69,10 +69,8 @@ export const MATRICULANT= gql`
          schoolName
          major
        }
-       MatriculantMajors {
-         Major {
-           name
-         }
+       Programs{
+         name
        }
        createdAt
      }
@@ -129,7 +127,7 @@ mutation CreateMatriculant($NIK: String!,$NISN: String!,
                           $parentsJob: String!, $email: String!,$phone: String!,
                           $password: String!,$sourceInformation: SourceInformation!,
                           $RegistrationGroup: Int!,$address: String!,
-                          $status: Status!,$Origin: Int!,$LastEducation: Int!,$majorOne: Int!,$majorTwo: Int!){
+                          $status: Status!,$Origin: Int!,$LastEducation: Int!,$majorOne: Int!,$majorTwo: Int!, $userId: Int!){
       createMatriculant(input:{
         NIK: $NIK,
         NISN: $NISN,
@@ -155,44 +153,10 @@ mutation CreateMatriculant($NIK: String!,$NISN: String!,
         Origin: $Origin,
         LastEducation: $LastEducation,
         majorOne: $majorOne,
-        majorTwo: $majorTwo
+        majorTwo: $majorTwo,
+        userId: $userId
       }){
-        NIK
-        NISN
-        fullName
-        gender
-        bloodType
-        birthPlace
-        birth
-        religion
-        citizenship
-        fatherName
-        fatherBirth
-        motherName
-        motherBirth
-        parentsJob
-        email
-        phone
-        password
-        sourceInformation
-        RegistrationGroup{
-          type
-          group
-        }
-        address
-        status
-        Origin{
-          name
-          district
-          subDistrict
-          zipcode
-        }
-        LastEducation{
-          schoolName
-          major
-        }
-        createdAt
-        updatedAt
+       id
       }
     }
 `

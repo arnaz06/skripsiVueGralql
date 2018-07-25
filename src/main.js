@@ -6,7 +6,10 @@ import VueApollo from 'vue-apollo'
 import App from './App.vue'
 import router from './router'
 import VueGoodTable from 'vue-good-table';
+import VueChartkick from 'vue-chartkick'
+import Chart from 'chart.js'
 
+Vue.use(VueChartkick, { adapter: Chart })
 
 Vue.use(VueGoodTable);
 Vue.config.productionTip= false

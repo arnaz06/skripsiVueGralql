@@ -175,7 +175,7 @@
   <!-- END Footer -->
   </div>
   <!-- END Page Container -->
-</div>
+
 </template>
 <script>
 import Table from './Table.vue'

@@ -65,7 +65,7 @@ export default {
   data(){
     return{
       matriculantAll: [],
-      status: '',
+      status: null,
       regisGroup:'',
       date: '',
       schoolName:'',

@@ -62,12 +62,14 @@
             <div class="block">
               <div class="block-header">
                 <center>
-                <h3 class="block-title">Statistik Pendaftaran Calon Mahasiswa Per Bulan</h3>
+                <!-- <h3 class="block-title">Statistik Pendaftaran Calon Mahasiswa Per Bulan</h3> -->
                 </center>
               </div>
               <div class="block-content block-content-full">
                 <!-- Stacked Chart Container -->
-                <app-graph :chart-data="matriculantPerMonth" :options="option"></app-graph>
+                <!-- <app-graph :chart-data="matriculantPerMonth" :options="option"></app-graph> -->
+                <!-- <line-chart :data="{'2017-05-13': 2, '2017-05-14': 5}"></line-chart> -->
+                <canvas id="myChart" width="400" height="400"></canvas>
               </div>
             </div>
             <!-- END Stacked Chart -->
@@ -92,11 +94,12 @@ export default {
       sortMatriculant:{},
       matriculantPerMonth:{
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        data:[0,0,0,0,0,0,0,0,0,0,0,0],
         datasets: [
           {
-            label: 'Calon Mahasiswa',
+            label: 'Statistik Pendaftaran Calon Mahasiswa Per Bulan',
             backgroundColor: '#f87979',
-            data: [1,2,3,4,5,6,7,8,9,10,11,12]
+            data: [0,0,0,0,0,0,0,0,0,0,0,0]
           }
         ]
       },
@@ -110,9 +113,39 @@ export default {
   },
   mounted () {
     this.getSortMatriculant()
-    this.getMatriculantPerMonth()
+    this.getMatriculantPerMonth().then(()=>{
+
+      this.renderChar()
+    }) 
   },
   methods:{
+    renderChar(){
+      var ctx = document.getElementById("myChart").getContext('2d');
+      var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: this.matriculantPerMonth.labels,
+          datasets: [{
+              label: 'Statistik Pendaftaran Calon Mahasiswa Per Bulan',
+              data: this.matriculantPerMonth.data,
+              backgroundColor:'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgba(255,99,132,1)',
+              borderWidth: 1
+          }]
+      },
+      options: {
+          response:true,
+          maintainAspectRatio:false,
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          }
+      }
+  });
+    },
     getSortMatriculant(){
       this.$apollo.query({
         query: SORTMATRICULANT,
@@ -127,31 +160,25 @@ export default {
 
       })
     },
-     getMatriculantPerMonth(){
-       console.log('disini');
-       
-      this.$apollo.query({
+    getMatriculantPerMonth (){
+        return this.$apollo.query({
         query:MATRICULANT_PER_MONTH,
         variables:{
           year: this.year
         }
       }).then(response=>{
-        console.log(response.data.matriculantPerMonth)
-        let datasets= Object.keys(response.data.matriculantPerMonth).map(key=> response.data.matriculantPerMonth[key])
-        console.log('ds',datasets);
-        this.matriculantPerMonth.datasets[0].data=[]
-        this.matriculantPerMonth.datasets[0].data[0]=response.data.matriculantPerMonth.jan
-        this.matriculantPerMonth.datasets[0].data[1]=response.data.matriculantPerMonth.feb
-        this.matriculantPerMonth.datasets[0].data[2]=response.data.matriculantPerMonth.mar
-        this.matriculantPerMonth.datasets[0].data[3]=response.data.matriculantPerMonth.apr
-        this.matriculantPerMonth.datasets[0].data[4]=response.data.matriculantPerMonth.may
-        this.matriculantPerMonth.datasets[0].data[5]=response.data.matriculantPerMonth.jun
-        this.matriculantPerMonth.datasets[0].data[6]=response.data.matriculantPerMonth.jul
-        this.matriculantPerMonth.datasets[0].data[7]=response.data.matriculantPerMonth.ags
-        this.matriculantPerMonth.datasets[0].data[8]=response.data.matriculantPerMonth.sep
-        this.matriculantPerMonth.datasets[0].data[9]=response.data.matriculantPerMonth.oct
-        this.matriculantPerMonth.datasets[0].data[10]=response.data.matriculantPerMonth.nov
-        this.matriculantPerMonth.datasets[0].data[11]=response.data.matriculantPerMonth.dec
+        this.matriculantPerMonth.data[0]=response.data.matriculantPerMonth.jan
+        this.matriculantPerMonth.data[1]=response.data.matriculantPerMonth.feb
+        this.matriculantPerMonth.data[2]=response.data.matriculantPerMonth.mar
+        this.matriculantPerMonth.data[3]=response.data.matriculantPerMonth.apr
+        this.matriculantPerMonth.data[4]=response.data.matriculantPerMonth.may
+        this.matriculantPerMonth.data[5]=response.data.matriculantPerMonth.jun
+        this.matriculantPerMonth.data[6]=response.data.matriculantPerMonth.jul
+        this.matriculantPerMonth.data[7]=response.data.matriculantPerMonth.ags
+        this.matriculantPerMonth.data[8]=response.data.matriculantPerMonth.sep
+        this.matriculantPerMonth.data[9]=response.data.matriculantPerMonth.oct
+        this.matriculantPerMonth.data[10]=response.data.matriculantPerMonth.nov
+        this.matriculantPerMonth.data[11]=response.data.matriculantPerMonth.dec
       }).catch(err=>{
         console.log(err);
         alert(err.message)

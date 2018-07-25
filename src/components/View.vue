@@ -261,13 +261,13 @@
                       <div class="form-group">
                         <label class="col-md-4 control-label" for="pilihan_pertama">Pilihan I</label>
                         <div class="col-md-8">
-                          <div name="" type="text" class="form-control-static" id="pilihan_pertama">{{matriculant.MatriculantMajors[0].Major.name}}</div>
+                          <div name="" type="text" class="form-control-static" id="pilihan_pertama">{{matriculant.Programs[0].name}}</div>
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="col-md-4 control-label" for="pilihan_kedua">Pilihan II</label>
                         <div class="col-md-8">
-                          <div name="" type="text" class="form-control-static" id="pilihan_kedua">{{matriculant.MatriculantMajors[1].Major.name}}</div>
+                          <div name="" type="text" class="form-control-static" id="pilihan_kedua">{{matriculant.Programs[1].name}}</div>
                         </div>
                       </div>
                     </div>
@@ -338,7 +338,6 @@ export default {
           id: this.$route.params.id
         } 
       }).then(response=>{
-        console.log(response);
         this.matriculant=response.data.matriculant
         this.status= response.data.matriculant.status
       }).catch(err=>{
